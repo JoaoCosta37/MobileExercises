@@ -1,0 +1,103 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\01d.png" />
+    <None Remove="Resources\01n.png" />
+    <None Remove="Resources\02d.png" />
+    <None Remove="Resources\02n.png" />
+    <None Remove="Resources\03d.png" />
+    <None Remove="Resources\03n.png" />
+    <None Remove="Resources\04d.png" />
+    <None Remove="Resources\04n.png" />
+    <None Remove="Resources\09d.png" />
+    <None Remove="Resources\09n.png" />
+    <None Remove="Resources\10d.png" />
+    <None Remove="Resources\10n.png" />
+    <None Remove="Resources\11d.png" />
+    <None Remove="Resources\11n.png" />
+    <None Remove="Resources\13d.png" />
+    <None Remove="Resources\13n.png" />
+    <None Remove="Resources\50d.png" />
+    <None Remove="Resources\50n.png" />
+    <None Remove="Resources\digital-7.monoitalic.ttf" />
+    <None Remove="Resources\DS-DIGIT.TTF" />
+    <None Remove="Resources\icons.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\01d.png" />
+    <EmbeddedResource Include="Resources\01n.png" />
+    <EmbeddedResource Include="Resources\02d.png" />
+    <EmbeddedResource Include="Resources\02n.png" />
+    <EmbeddedResource Include="Resources\03d.png" />
+    <EmbeddedResource Include="Resources\03n.png" />
+    <EmbeddedResource Include="Resources\04d.png" />
+    <EmbeddedResource Include="Resources\04n.png" />
+    <EmbeddedResource Include="Resources\09d.png" />
+    <EmbeddedResource Include="Resources\09n.png" />
+    <EmbeddedResource Include="Resources\10d.png" />
+    <EmbeddedResource Include="Resources\10n.png" />
+    <EmbeddedResource Include="Resources\11d.png" />
+    <EmbeddedResource Include="Resources\11n.png" />
+    <EmbeddedResource Include="Resources\13d.png" />
+    <EmbeddedResource Include="Resources\13n.png" />
+    <EmbeddedResource Include="Resources\50d.png" />
+    <EmbeddedResource Include="Resources\50n.png" />
+    <EmbeddedResource Include="Resources\digital-7.monoitalic.ttf" />
+    <EmbeddedResource Include="Resources\DS-DIGIT.TTF" />
+    <EmbeddedResource Include="Resources\icons.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Mensagens.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Mensagens.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AlarmsPage.xaml.cs">
+      <DependentUpon>AlarmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ClockPage.xaml.cs">
+      <DependentUpon>ClockPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Mensagens.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mensagens.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AlarmsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DaysToRepeatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewAlarmPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

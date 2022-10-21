@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GetYourCepApp.Views.GetCepPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Azure">
+            <Entry Placeholder="Insira seu CEP"
+                   Text="{Binding Cep, Mode=OneWayToSource}"
+                   Margin="20,30,20,50"
+                   MaxLength="8"
+                   HorizontalOptions="Center">
+            </Entry>
+            <Button Text="Confirm" Command="{Binding LoadCepCommand}"/>
+
+            <StackLayout BackgroundColor="Blue">
+                <Label Text="{Binding CepData.Logradouro}">
+                    
+                </Label>
+            </StackLayout>
+
+            <Label Text="{Binding Cep}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

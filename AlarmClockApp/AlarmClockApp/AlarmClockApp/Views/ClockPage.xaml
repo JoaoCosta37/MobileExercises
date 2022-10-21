@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:AlarmClockApp.Views"
+             xmlns:conv="clr-namespace:AlarmClockApp.Views.Converters"
+             xmlns:mark="clr-namespace:AlarmClockApp.Views.Markup"
+             x:Class="AlarmClockApp.ClockPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:DateTimeToStringConverter x:Key="DateTimeToStringConv"/>
+            <conv:DateTimeToDayOfWeekConverter x:Key="DateTimeToDayOfWeekConv"/>
+            <conv:StringToFontIconConverter x:Key="StringToFontIconConv"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout BackgroundColor="Black">
+
+        <StackLayout BackgroundColor="Black">
+            <StackLayout>
+               
+            </StackLayout>
+            <Button Text="{Binding WeatherIcon, Converter={StaticResource StringToFontIconConv}}"
+                    FontFamily="{StaticResource PostFontIcon}"
+                    HorizontalOptions="End"
+                    BackgroundColor="Black"
+                    TextColor="DodgerBlue"
+                    FontSize="40"
+                    Command="{mark:NavigationCommand Route={x:Type view:SettingsPage}}"
+                    >
+            </Button>
+        </StackLayout>
+
+
+        <Label VerticalOptions="EndAndExpand" HorizontalOptions="Center" >
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToStringConv},ConverterParameter=1}" FontSize="150" TextColor="DodgerBlue" FontFamily="DigitalClock"/>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToStringConv},ConverterParameter=2}" FontSize="30" TextColor="DodgerBlue" FontFamily="DigitalClock" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+            <Label.Resources>
+                <Style TargetType="Span">
+                    <Style.Setters>
+                        <Setter Property="TextColor" Value="DodgerBlue"/>
+                        <Setter Property="FontFamily" Value="DigitalClock"/>
+                        <Setter Property="FontSize" Value="30"/>
+                    </Style.Setters>
+                </Style>
+            </Label.Resources>
+            <Label.FormattedText>
+            <FormattedString>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToDayOfWeekConv}, ConverterParameter=1}"/>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToDayOfWeekConv}, ConverterParameter=2}"/>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToDayOfWeekConv}, ConverterParameter=3}"/>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToDayOfWeekConv}, ConverterParameter=4}"/>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToDayOfWeekConv}, ConverterParameter=5}"/>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToDayOfWeekConv}, ConverterParameter=6}"/>
+                    <Span Text="{Binding CurrentTime, Converter={StaticResource DateTimeToDayOfWeekConv}, ConverterParameter=0}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <StackLayout>
+            <Button Text="{x:Static view:AlarmIcon.BellAlarmIcon}"
+                    FontFamily="{StaticResource PostAlarmIcon}"
+                    HorizontalOptions="Start"
+                    BackgroundColor="Black"
+                    TextColor="DodgerBlue"
+                    FontSize="40"
+                    Command="{mark:NavigationCommand Route={x:Type view:AlarmsPage}}"
+                    >
+            </Button>
+        </StackLayout>
+        <!--<Label TextColor="White">
+            <Label.Text>
+                <ext:MarkupExtension GetText="Tomorrow"/>
+            </Label.Text>
+        </Label>-->
+    </StackLayout> 
+
+</ContentPage>

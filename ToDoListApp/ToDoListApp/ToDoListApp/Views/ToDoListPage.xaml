@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoListApp.Views.ToDoListPage"
+             xmlns:view="clr-namespace:ToDoListApp.Views">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="BlanchedAlmond">
+            <StackLayout Margin="20">
+                <StackLayout>
+                    <Label Text="To Do List"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="30"
+                           FontAttributes="Italic"/>
+                    <ListView ItemsSource="{Binding ToDoListItems}"
+                      HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Description}"
+                                           HorizontalOptions="FillAndExpand"
+                                           FontSize="20"
+                                           TextColor="DarkSeaGreen"
+                                           VerticalOptions="Center"/>
+                                        <CheckBox IsChecked="{Binding Checked}"
+                                              VerticalOptions="Center"
+                                              Color="DarkOliveGreen"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <ListView ItemsSource="{Binding ToDoListItemsClosed}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Description}"
+                                           HorizontalOptions="FillAndExpand"
+                                           FontSize="20"
+                                           TextColor="DarkSeaGreen"
+                                           VerticalOptions="Center"/>
+                                    <CheckBox IsChecked="{Binding Checked}"
+                                              VerticalOptions="Center"
+                                              Color="DarkOliveGreen"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout BackgroundColor="LemonChiffon"
+                         Orientation="Horizontal">
+                    <Entry Text="{Binding Description, Mode=TwoWay}"
+                           HorizontalOptions="FillAndExpand"/>
+                    <Button Command="{Binding AddCommand, Mode=OneWay}"
+                            Text="{x:Static view:FontIcons.Plus}"
+                            FontFamily="{StaticResource PostFontIcon}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

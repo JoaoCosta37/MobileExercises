@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:AlarmClockApp.Views.Converters"
+             xmlns:mark="clr-namespace:AlarmClockApp.Views.Markup"
+             xmlns:v="clr-namespace:AlarmClockApp.Views"
+             x:Class="AlarmClockApp.Views.NewAlarmPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:DaysToRepeatToStringConverter x:Key="DaysToRepeatToStringConv"/>
+            <conv:TimeSpanToStringConverter x:Key="TimeSpanToStringConv"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Order="Primary"
+                     Priority="0"
+                     Text="Definir Alarme">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#242424">
+            <StackLayout Padding="10,5,0,0">
+                <StackLayout.Resources>
+                    <Style TargetType="Label">
+                        <Style.Setters>
+                            <Setter Property="TextColor" Value="#fafafa"/>
+                        </Style.Setters>
+                    </Style>
+                </StackLayout.Resources>
+                <TimePicker x:Name="_timePicker"
+                            Time="{Binding NewAlarm.Time,  Mode=TwoWay}"
+                            Format="hh:mm"
+                            FontSize="50"
+                            HorizontalOptions="Center"
+                            TextColor="#fafafa"
+                            />
+                <StackLayout >
+                    <Label Text="Repetir"
+                           FontSize="25"/>
+                    <Label Text="{Binding NewAlarm.DaysToRepeat, Converter={StaticResource DaysToRepeatToStringConv}, Mode=OneWay}"
+                           FontSize="15"
+                           TextColor="#cccccc"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{mark:NavigationCommand Route={x:Type v:DaysToRepeatPage}}">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nota"
+                           FontSize="25"
+                           />
+                    <Entry Text="{Binding NewAlarm.Note, Mode=TwoWay}"
+                           TextColor="#fafafa"
+                           HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand">
+                <Button 
+                    Text="ELIMINAR"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding DeleteCommand, Mode=OneWay}" IsVisible="{Binding IsAlterMode}"/>
+                <Button HorizontalOptions="FillAndExpand"
+                        Text="GUARDAR"
+                        Command="{Binding SaveAlarmCommand, Mode=OneWay}"/>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

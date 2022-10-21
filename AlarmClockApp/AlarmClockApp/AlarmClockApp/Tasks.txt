@@ -1,0 +1,16 @@
+﻿
+// https://xamgirl.com/xaml-markup-extension-in-xamarin-forms
+
+1 - Colocar na View usando o fontello;
+
+2 - Pensar na Integração da Foto no ToDoList
+
+3 - Termianr o ToDoList;
+
+4 - colocar informação da carga de bateria;
+https://learn.microsoft.com/en-us/xamarin/essentials/battery?tabs=android
+
+5 - Novo App - Alicar o CEP e retornar as inf. - terminar
+https://viacep.com.br/ws/06162200/json/
+
+

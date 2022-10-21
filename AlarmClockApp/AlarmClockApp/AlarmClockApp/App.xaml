@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             x:Class="AlarmClockApp.App">
+    <Application.Resources>
+        <OnPlatform x:Key="PostFontIcon" x:TypeArguments="x:String">
+            <On Platform="Android" Value="icons.ttf#Regular" />
+            <On Platform="iOS" Value="icons" />
+        </OnPlatform>
+        <OnPlatform x:Key="PostAlarmIcon" x:TypeArguments="x:String">
+            <On Platform="Android" Value="alarmIcons.ttf#Regular" />
+            <On Platform="iOS" Value="alarmIcon" />
+        </OnPlatform>
+    </Application.Resources>
+</prism:PrismApplication>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:AlarmClockApp.Views"
+             xmlns:conv="clr-namespace:AlarmClockApp.Views.Converters"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:vm="clr-namespace:AlarmClockApp.ViewModels"
+             xmlns:bh="clr-namespace:AlarmClockApp.Views.Behaviors"
+             xmlns:mark="clr-namespace:AlarmClockApp.Views.Markup"
+             x:Class="AlarmClockApp.Views.AlarmsPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:TimeSpanToStringConverter  x:Key="TimeSpanToStringConv"/>
+            <conv:DaysToRepeatToStringConverter x:Key="DaysToRepeatToStringConv"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Order="Primary"
+                     Priority="0">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#151515">
+            <ListView ItemsSource="{Binding Alarms}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Padding="20, 10" 
+                                             HorizontalOptions="FillAndExpand"
+                                             xct:TouchEffect.LongPressCommand="{Binding DeleteCommand,Source={RelativeSource AncestorType={x:Type vm:AlarmsPageViewModel}}}"
+                                             xct:TouchEffect.LongPressCommandParameter="{Binding .}"
+                                             xct:TouchEffect.LongPressDuration="800"
+                                             xct:TouchEffect.Command="{Binding AlterCommand,Source={RelativeSource AncestorType={x:Type vm:AlarmsPageViewModel}}}"
+                                             xct:TouchEffect.CommandParameter="{Binding .}">
+                                    <StackLayout.Resources>
+                                        <Style TargetType="Label">
+                                            <Style.Setters>
+                                                <Setter Property="TextColor" Value="#fafafa"/>
+                                                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                                            </Style.Setters>
+                                        </Style>
+                                    </StackLayout.Resources >
+                                    <Label Text="{Binding Time, Converter={StaticResource TimeSpanToStringConv}}"></Label>
+                                    <Label Text="{Binding DaysToRepeat, Converter={StaticResource DaysToRepeatToStringConv}}"></Label>
+                                    <Label Text="{Binding Note}"></Label>
+                                </StackLayout>
+                                <StackLayout VerticalOptions="Center"
+                                             HorizontalOptions="End">
+                                    <Switch IsToggled="{Binding IsActive, Mode=TwoWay}"/>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Behaviors>
+                    <bh:ClearSelectedItemBehavior />
+                </ListView.Behaviors>
+            </ListView>
+            <StackLayout>
+                <Button Text="{x:Static view:AlarmIcon.NewAlarmIcon}"
+                        FontFamily="{StaticResource PostAlarmIcon}"
+                        HorizontalOptions="End" 
+                        BackgroundColor="#151515"
+                        TextColor="DodgerBlue"
+                        FontSize="40"
+                        Command="{mark:NavigationCommand Route={x:Type view:NewAlarmPage}}">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
