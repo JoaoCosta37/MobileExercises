@@ -6,12 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Timers;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AlarmClockApp.ViewModels
 {
     public class ClockPageViewModel : BindableBase
     {
+        private bool charging;
+        private double level;
         DateTime currentTime;
         Timer timer;
         private string weatherIcon;
@@ -29,12 +32,34 @@ namespace AlarmClockApp.ViewModels
             this.navigationService = navigationService;
             this.weatherService = weatherService;
             loadWeather();
+            loadBattery();
+
+            Battery.BatteryInfoChanged += Battery_BatteryInfoChanged;
         }
         public string WeatherIcon
         {
             get => weatherIcon; set
             {
                 weatherIcon = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        public bool Charging
+        {
+            get => charging; set
+            {
+                charging = value;
+                RaisePropertyChanged();
+            }
+        }
+        public double Level
+        {
+            get => level;
+            set
+            {
+                level = value;
                 RaisePropertyChanged();
             }
         }
@@ -53,10 +78,21 @@ namespace AlarmClockApp.ViewModels
                 RaisePropertyChanged();
             }
         }
+        void loadBattery()
+        {
+            this.Level = Battery.ChargeLevel;
+            this.Charging = Battery.State == BatteryState.Charging;
+        }
         async void loadWeather()
         {
             var weather = await this.weatherService.GetWeatherAsync();
             this.WeatherIcon = weather.Icon;
+        }
+
+        void Battery_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs e)
+        {
+            this.Level = e.ChargeLevel;
+            this.Charging = e.State == BatteryState.Charging;
         }
     }
 }

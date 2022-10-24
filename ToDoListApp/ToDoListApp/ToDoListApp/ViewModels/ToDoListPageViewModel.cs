@@ -15,11 +15,12 @@ namespace ToDoListApp.ViewModels
         ObservableCollection<ToDoListViewModel> toDoListItems;
         ObservableCollection<ToDoListViewModel> toDoListItemsClosed;
         private string description;
-
+        
         public ToDoListPageViewModel()
         {
             loadData();
             AddCommand = new Command(() => add());
+            DeleteCommand = new Command((x) => delete(x));
         }
         public string Description
         {
@@ -29,6 +30,7 @@ namespace ToDoListApp.ViewModels
                 RaisePropertyChanged();
             }
         }
+        public Command DeleteCommand { get; set; }
         public Command AddCommand { get; set; }
         public ObservableCollection<ToDoListViewModel> ToDoListItems
         {
@@ -90,6 +92,17 @@ namespace ToDoListApp.ViewModels
             ToDoListDataBase database = await ToDoListDataBase.Instance;
             await database.SaveToDoListAsync(item);
             loadData();
+        }
+        async void delete(object toDoListVm)
+        {
+            var action = await Application.Current.MainPage.DisplayAlert("Delete Task", "Are you sure you want to delete this Task?", "YES", "NO");
+            if (action)
+            {
+                var toDoList = (ToDoListViewModel)toDoListVm;
+                ToDoListDataBase database = await ToDoListDataBase.Instance;
+                await database.DeleteToDoListAsync(toDoList.ToDoListItem);
+                loadData();
+            }
         }
     }
 }

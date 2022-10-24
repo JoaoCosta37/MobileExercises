@@ -1,0 +1,7 @@
+﻿
+
+1 - Apagar o Input e criar um Disable para o Button
+
+2 - Colocar foto;
+
+3 - Retirar o Selected;

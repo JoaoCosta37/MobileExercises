@@ -22,7 +22,7 @@ namespace AlarmClockApp.Views
     {
         public static string i01d = "\uE800";
         public static string i02d = "\uE801";
-        public static string i04n = "\uE800";
+        public static string i04n = "\uE801";
     }
 
 }

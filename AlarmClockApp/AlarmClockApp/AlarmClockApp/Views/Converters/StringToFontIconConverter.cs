@@ -11,10 +11,13 @@ namespace AlarmClockApp.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-           var atrib = typeof(WeatherIcon).GetField("i" + value.ToString(), BindingFlags.Static | BindingFlags.Public);
-           return atrib.GetValue(null);
-            
-            //var fontIcon = (FontIcons)
+            if (value != null) 
+            {
+            var atrib = typeof(WeatherIcon).GetField("i" + value.ToString(), BindingFlags.Static | BindingFlags.Public);
+            return atrib.GetValue(null);
+        }
+        else
+        return String.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

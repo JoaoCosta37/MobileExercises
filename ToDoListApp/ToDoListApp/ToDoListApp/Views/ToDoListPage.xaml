@@ -1,22 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ToDoListApp.Views.ToDoListPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:vm="clr-namespace:ToDoListApp.ViewModels"
+    x:Class="ToDoListApp.Views.ToDoListPage"
              xmlns:view="clr-namespace:ToDoListApp.Views">
     <ContentPage.Content>
         <StackLayout BackgroundColor="BlanchedAlmond">
-            <StackLayout Margin="20">
+            <StackLayout Margin="15">
                 <StackLayout>
                     <Label Text="To Do List"
                            HorizontalOptions="CenterAndExpand"
-                           FontSize="30"
+                           FontSize="20"
                            FontAttributes="Italic"/>
                     <ListView ItemsSource="{Binding ToDoListItems}"
                       HasUnevenRows="True">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Padding="0">
+                                        <Button Text="{x:Static view:FontIcons.X}"
+                                                FontFamily="{StaticResource PostFontIcon}"
+                                                BackgroundColor="Transparent"
+                                                FontSize="20"
+                                                WidthRequest="40"
+                                                HeightRequest="35"
+                                                HorizontalOptions="Start"
+                                                TextColor="DarkRed"
+                                                Command="{Binding DeleteCommand,Source={RelativeSource AncestorType={x:Type vm:ToDoListPageViewModel}}}"
+                                                CommandParameter="{Binding .}"/>
+                                        <Label Text="{Binding Description}"
+                                           HorizontalOptions="FillAndExpand"
+                                           FontSize="20"
+                                           TextColor="red"
+                                           VerticalOptions="Center"/>
+                                        <CheckBox IsChecked="{Binding Checked}"
+                                              VerticalOptions="Center"
+                                              Color="red"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Checked"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="20"
+                           FontAttributes="Italic"/>
+                    <ListView ItemsSource="{Binding ToDoListItemsClosed}" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
                                     <StackLayout Orientation="Horizontal">
+                                        <Button Text="{x:Static view:FontIcons.X}"
+                                                FontFamily="{StaticResource PostFontIcon}"
+                                                BackgroundColor="Transparent"
+                                                FontSize="20"
+                                                WidthRequest="40"
+                                                HeightRequest="35"
+                                                HorizontalOptions="Start"
+                                                TextColor="DarkRed"
+                                                Command="{Binding DeleteCommand}"/>
                                         <Label Text="{Binding Description}"
                                            HorizontalOptions="FillAndExpand"
                                            FontSize="20"
@@ -31,30 +76,18 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <ListView ItemsSource="{Binding ToDoListItemsClosed}" HasUnevenRows="True">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Description}"
-                                           HorizontalOptions="FillAndExpand"
-                                           FontSize="20"
-                                           TextColor="DarkSeaGreen"
-                                           VerticalOptions="Center"/>
-                                    <CheckBox IsChecked="{Binding Checked}"
-                                              VerticalOptions="Center"
-                                              Color="DarkOliveGreen"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <StackLayout BackgroundColor="LemonChiffon"
+                <StackLayout BackgroundColor="Transparent"
                          Orientation="Horizontal">
                     <Entry Text="{Binding Description, Mode=TwoWay}"
+                           TextColor="Blue"
                            HorizontalOptions="FillAndExpand"/>
                     <Button Command="{Binding AddCommand, Mode=OneWay}"
                             Text="{x:Static view:FontIcons.Plus}"
+                            BackgroundColor="Transparent"
+                            FontSize="25"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            TextColor="Blue"
                             FontFamily="{StaticResource PostFontIcon}"/>
                 </StackLayout>
             </StackLayout>

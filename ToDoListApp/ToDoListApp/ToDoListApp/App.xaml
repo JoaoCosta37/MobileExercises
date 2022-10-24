@@ -6,8 +6,8 @@
 
     <Application.Resources>
         <OnPlatform x:Key="PostFontIcon" x:TypeArguments="x:String">
-            <On Platform="Android" Value="toDoListIcons.ttf#Regular" />
-            <On Platform="iOS" Value="to-do-list.ttf#Regular" />
+            <On Platform="Android" Value="icons.ttf#Regular" />
+            <On Platform="iOS" Value="icons.ttf#Regular" />
         </OnPlatform>
     </Application.Resources>
 </prism:PrismApplication>

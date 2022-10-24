@@ -33,7 +33,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <StackLayout Padding="20, 10" 
                                              HorizontalOptions="FillAndExpand"
-                                             xct:TouchEffect.LongPressCommand="{Binding DeleteCommand,Source={RelativeSource AncestorType={x:Type vm:AlarmsPageViewModel}}}"
+                                             xct:TouchEffect.LongPressCommand="{Binding DeleteCommand}"
                                              xct:TouchEffect.LongPressCommandParameter="{Binding .}"
                                              xct:TouchEffect.LongPressDuration="800"
                                              xct:TouchEffect.Command="{Binding AlterCommand,Source={RelativeSource AncestorType={x:Type vm:AlarmsPageViewModel}}}"

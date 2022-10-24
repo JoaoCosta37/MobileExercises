@@ -46,7 +46,7 @@ namespace ToDoListApp.DAL
             }
         }
 
-        public Task<int> DeleteToDoListsync(ToDoListData item)
+        public Task<int> DeleteToDoListAsync(ToDoListData item)
         {
             return Database.DeleteAsync(item);
         }
