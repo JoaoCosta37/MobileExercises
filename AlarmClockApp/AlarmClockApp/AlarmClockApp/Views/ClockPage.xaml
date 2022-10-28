@@ -10,23 +10,35 @@
             <conv:DateTimeToStringConverter x:Key="DateTimeToStringConv"/>
             <conv:DateTimeToDayOfWeekConverter x:Key="DateTimeToDayOfWeekConv"/>
             <conv:StringToFontIconConverter x:Key="StringToFontIconConv"/>
+            <conv:BatteryLevelToStringConverter x:Key="BatteryLevelToStringConv"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <StackLayout BackgroundColor="Black">
 
-        <StackLayout BackgroundColor="Black">
-            <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="Center"
+                         Padding="20,20,0,0"
+                         HorizontalOptions="StartAndExpand">
+                <Label Text="{Binding WeatherIcon, Converter={StaticResource StringToFontIconConv}}"
+                       FontFamily="{StaticResource PostWeatherIcon}"
+                       FontSize="40"
+                       TextColor="DodgerBlue"
+                       VerticalOptions="Center">
+                </Label>
+                <Label Text="{Binding BatteryLevel, Converter={StaticResource BatteryLevelToStringConv}}"
+                       TextColor="DodgerBlue">
+                </Label>
                
             </StackLayout>
-            <Button Text="{Binding WeatherIcon, Converter={StaticResource StringToFontIconConv}}"
+            <Button Text="{x:Static view:FontIcons.ConfigIcon}"
                     FontFamily="{StaticResource PostFontIcon}"
                     HorizontalOptions="End"
-                    BackgroundColor="Black"
                     TextColor="DodgerBlue"
+                    BackgroundColor="Transparent"
                     FontSize="40"
-                    Command="{mark:NavigationCommand Route={x:Type view:SettingsPage}}"
-                    >
+                    Command="{mark:NavigationCommand Route={x:Type view:SettingsPage}}">
             </Button>
         </StackLayout>
 

@@ -15,6 +15,7 @@ namespace ToDoListApp.ViewModels
         ObservableCollection<ToDoListViewModel> toDoListItems;
         ObservableCollection<ToDoListViewModel> toDoListItemsClosed;
         private string description;
+        private bool inserting;
         
         public ToDoListPageViewModel()
         {
@@ -27,6 +28,17 @@ namespace ToDoListApp.ViewModels
             get => description; set
             {
                 description = value;
+                if (description == "" || description == null) Inserting = false;
+                else Inserting = true;
+                RaisePropertyChanged();
+            }
+        }
+        public bool Inserting
+        {
+            get => inserting;
+            set
+            {
+                inserting = value;
                 RaisePropertyChanged();
             }
         }
@@ -91,6 +103,7 @@ namespace ToDoListApp.ViewModels
             var item = new ToDoListData() { Description = this.Description, Checked = false };
             ToDoListDataBase database = await ToDoListDataBase.Instance;
             await database.SaveToDoListAsync(item);
+            this.Description = "";
             loadData();
         }
         async void delete(object toDoListVm)

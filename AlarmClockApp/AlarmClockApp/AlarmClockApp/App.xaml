@@ -12,5 +12,9 @@
             <On Platform="Android" Value="alarmIcons.ttf#Regular" />
             <On Platform="iOS" Value="alarmIcon" />
         </OnPlatform>
+        <OnPlatform x:Key="PostWeatherIcon" x:TypeArguments="x:String">
+            <On Platform="Android" Value="weatherIcons.ttf#Regular" />
+            <On Platform="iOS" Value="weatherIcons.ttf#Regular" />
+        </OnPlatform>
     </Application.Resources>
 </prism:PrismApplication>

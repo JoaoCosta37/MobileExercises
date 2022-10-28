@@ -83,6 +83,7 @@
                            HorizontalOptions="FillAndExpand"/>
                     <Button Command="{Binding AddCommand, Mode=OneWay}"
                             Text="{x:Static view:FontIcons.Plus}"
+                            IsEnabled="{Binding Inserting}"
                             BackgroundColor="Transparent"
                             FontSize="25"
                             WidthRequest="50"

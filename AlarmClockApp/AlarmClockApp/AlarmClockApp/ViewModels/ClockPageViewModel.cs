@@ -13,8 +13,8 @@ namespace AlarmClockApp.ViewModels
 {
     public class ClockPageViewModel : BindableBase
     {
-        private bool charging;
-        private double level;
+        private bool batteryCharging;
+        private double batteryLevel;
         DateTime currentTime;
         Timer timer;
         private string weatherIcon;
@@ -46,20 +46,20 @@ namespace AlarmClockApp.ViewModels
         }
 
 
-        public bool Charging
+        public bool BatteryCharging
         {
-            get => charging; set
+            get => batteryCharging; set
             {
-                charging = value;
+                batteryCharging = value;
                 RaisePropertyChanged();
             }
         }
-        public double Level
+        public double BatteryLevel
         {
-            get => level;
+            get => batteryLevel;
             set
             {
-                level = value;
+                batteryLevel = value;
                 RaisePropertyChanged();
             }
         }
@@ -80,19 +80,20 @@ namespace AlarmClockApp.ViewModels
         }
         void loadBattery()
         {
-            this.Level = Battery.ChargeLevel;
-            this.Charging = Battery.State == BatteryState.Charging;
+            this.BatteryLevel = Battery.ChargeLevel;
+            this.BatteryCharging = Battery.State == BatteryState.Charging;
         }
         async void loadWeather()
         {
             var weather = await this.weatherService.GetWeatherAsync();
-            this.WeatherIcon = weather.Icon;
+            //this.WeatherIcon = weather.Icon;
+            this.WeatherIcon = "unknown";
         }
 
         void Battery_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs e)
         {
-            this.Level = e.ChargeLevel;
-            this.Charging = e.State == BatteryState.Charging;
+            this.BatteryLevel = e.ChargeLevel;
+            this.BatteryCharging = e.State == BatteryState.Charging;
         }
     }
 }
