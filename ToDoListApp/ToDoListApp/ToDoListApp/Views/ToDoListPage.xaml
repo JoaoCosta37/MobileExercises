@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:vm="clr-namespace:ToDoListApp.ViewModels"
-    x:Class="ToDoListApp.Views.ToDoListPage"
+             xmlns:bhv="clr-namespace:ToDoListApp.Views.Behaviors"
+             x:Class="ToDoListApp.Views.ToDoListPage"
              xmlns:view="clr-namespace:ToDoListApp.Views">
     <ContentPage.Content>
         <StackLayout BackgroundColor="BlanchedAlmond">
@@ -41,6 +42,9 @@
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.Behaviors>
+                            <bhv:ClearSelectedItemBehavior/>
+                        </ListView.Behaviors>
                     </ListView>
                 </StackLayout>
                 <StackLayout>
@@ -53,7 +57,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
-                                        <Button Text="{x:Static view:FontIcons.X}"
+                                            <Button Text="{x:Static view:FontIcons.X}"
                                                 FontFamily="{StaticResource PostFontIcon}"
                                                 BackgroundColor="Transparent"
                                                 FontSize="20"
@@ -61,19 +65,23 @@
                                                 HeightRequest="35"
                                                 HorizontalOptions="Start"
                                                 TextColor="DarkRed"
-                                                Command="{Binding DeleteCommand}"/>
-                                        <Label Text="{Binding Description}"
+                                                Command="{Binding DeleteCommand,Source={RelativeSource AncestorType={x:Type vm:ToDoListPageViewModel}}}"
+                                                CommandParameter="{Binding .}"/>
+                                            <Label Text="{Binding Description}"
                                            HorizontalOptions="FillAndExpand"
                                            FontSize="20"
                                            TextColor="DarkSeaGreen"
                                            VerticalOptions="Center"/>
-                                        <CheckBox IsChecked="{Binding Checked}"
+                                            <CheckBox IsChecked="{Binding Checked}"
                                               VerticalOptions="Center"
                                               Color="DarkOliveGreen"/>
-                                    </StackLayout>
+                                        </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.Behaviors>
+                            <bhv:ClearSelectedItemBehavior/>
+                        </ListView.Behaviors>
                     </ListView>
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent"

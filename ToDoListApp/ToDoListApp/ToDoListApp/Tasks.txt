@@ -4,4 +4,4 @@
 
 2 - Colocar foto;
 
-3 - Retirar o Selected;ok
+3 - Retirar o Selected; ok
