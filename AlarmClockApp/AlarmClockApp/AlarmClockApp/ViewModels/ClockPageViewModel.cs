@@ -86,8 +86,7 @@ namespace AlarmClockApp.ViewModels
         async void loadWeather()
         {
             var weather = await this.weatherService.GetWeatherAsync();
-            //this.WeatherIcon = weather.Icon;
-            this.WeatherIcon = "unknown";
+            this.WeatherIcon = weather.Icon;
         }
 
         void Battery_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs e)

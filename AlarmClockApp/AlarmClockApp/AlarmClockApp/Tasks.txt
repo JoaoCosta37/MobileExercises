@@ -1,14 +1,15 @@
 ﻿
 // https://xamgirl.com/xaml-markup-extension-in-xamarin-forms
 
-1 - Colocar na View usando o fontello;
+1 - Fazer a View das Mensagens
 
-2 - Pensar na Integração da Foto no ToDoList
+2 - Enviar Nova Mensagem (com autor cravo)
 
-3 - Fazer tela Inicial do Chat
+3 - Pensar na Integração da Foto no ToDoList
 
-4 - colocar informação da carga de bateria;
-https://learn.microsoft.com/en-us/xamarin/essentials/battery?tabs=android
+4 - Fazer tela Inicial do Chat
+
+https://blog.logrocket.com/how-to-build-chatroom-app-react-firebase/
 
 5 - Fazer cadastro de um chat novo
 

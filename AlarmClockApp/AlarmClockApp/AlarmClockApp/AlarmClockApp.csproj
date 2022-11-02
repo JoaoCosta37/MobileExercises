@@ -35,24 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\01d.png" />
-    <EmbeddedResource Include="Resources\01n.png" />
-    <EmbeddedResource Include="Resources\02d.png" />
-    <EmbeddedResource Include="Resources\02n.png" />
-    <EmbeddedResource Include="Resources\03d.png" />
-    <EmbeddedResource Include="Resources\03n.png" />
-    <EmbeddedResource Include="Resources\04d.png" />
-    <EmbeddedResource Include="Resources\04n.png" />
-    <EmbeddedResource Include="Resources\09d.png" />
-    <EmbeddedResource Include="Resources\09n.png" />
-    <EmbeddedResource Include="Resources\10d.png" />
-    <EmbeddedResource Include="Resources\10n.png" />
-    <EmbeddedResource Include="Resources\11d.png" />
-    <EmbeddedResource Include="Resources\11n.png" />
-    <EmbeddedResource Include="Resources\13d.png" />
-    <EmbeddedResource Include="Resources\13n.png" />
-    <EmbeddedResource Include="Resources\50d.png" />
-    <EmbeddedResource Include="Resources\50n.png" />
     <EmbeddedResource Include="Resources\digital-7.monoitalic.ttf" />
     <EmbeddedResource Include="Resources\DS-DIGIT.TTF" />
     <EmbeddedResource Include="Resources\icons.ttf" />

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:view="clr-namespace:ChatApp.Views"
-             xmlns:prism="http://prismlibrary.com"
-             x:Class="ChatApp.Views.ChatRoomsPage">
-
+             x:Class="ChatApp.Views.ChatPage">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"></Setter>
+        </Style>
+    </ContentPage.Resources>
     <StackLayout BackgroundColor="Black">
 
         <StackLayout BackgroundColor="Black">
@@ -20,18 +22,16 @@
                FontSize="17"/>
         </StackLayout>
 
-        <!--<StackLayout>
-            <ListView >
+        <StackLayout>
+            <ListView ItemsSource="{Binding Messages}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            
-                        </StackLayout>
+                        <ViewCell>
+                            <Label Text="{Binding Text}" TextColor="White"></Label>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>-->
-        <Button Command="{prism:NavigateTo  {x:Static view:Routes.ChatPageRoute}}"></Button>
+        </StackLayout>
     </StackLayout>
-
 </ContentPage>

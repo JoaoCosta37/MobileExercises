@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ChatApp.ViewModels;
 using ChatApp.Service;
+using ChatApp.Views;
+using ChatApp.Infrastructure;
 
 namespace ChatApp
 {
@@ -41,7 +43,10 @@ namespace ChatApp
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<ChatRoomsPage, ChatRoomsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ChatPage, ChatPageViewModel>();
             containerRegistry.Register<IChatRoomService, ChatRoomService>();
+            containerRegistry.Register<IMessageService, MessageService>();
+            containerRegistry.Register<IFirebaseClientFactory, FirebaseClientFactory>();
 
 
         }
