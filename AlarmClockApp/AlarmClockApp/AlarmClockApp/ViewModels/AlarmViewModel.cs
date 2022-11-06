@@ -20,14 +20,11 @@ namespace AlarmClockApp.ViewModels
         {
             get => Alarm.Time; set
             {
-                if (Alarm.Time != value)
-                {
-                    Alarm.Time = value;
-                    RaisePropertyChanged();
-
-                }
+                Alarm.Time = value;
+                RaisePropertyChanged();
             }
         }
+
         public List<DayOfWeek> DaysToRepeat
         {
             get => Alarm.DaysToRepeat; set

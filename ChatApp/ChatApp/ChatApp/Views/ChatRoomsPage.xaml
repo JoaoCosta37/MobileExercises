@@ -3,34 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:ChatApp.Views"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:mark="clr-namespace:ChatApp.Views.Markup"
              x:Class="ChatApp.Views.ChatRoomsPage">
 
     <StackLayout BackgroundColor="Black">
+        <StackLayout.Resources>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>   
+        </StackLayout.Resources>
 
         <StackLayout BackgroundColor="Black">
-            <Label Text="Chat Room"
+            <StackLayout>
+                <Label Text="{Binding}"/>
+                <Label
                TextColor="White"
                HorizontalOptions="Center"
                Margin="20"
                FontSize="35"
-               ></Label>
-            <Label Text="Choose a Chat Room"
+               >
+                <Label.Text>
+                    <mark:MessageExtention MessageKey="ChatRoom"/>
+                </Label.Text>
+            </Label>
+                
+            </StackLayout>
+            <Label
                TextColor="White"
                HorizontalOptions="Center"
-               FontSize="17"/>
+               FontSize="17">
+                <Label.Text>
+                    <mark:MessageExtention MessageKey="ChooseChatRoom"/>
+                </Label.Text>
+            </Label>
         </StackLayout>
 
-        <!--<StackLayout>
-            <ListView >
+        <StackLayout>
+            <ListView ItemsSource="{Binding ChatRoomsVm}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            
-                        </StackLayout>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding ChatRoom.Description}"/>
+                            </StackLayout>
+
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>-->
+        </StackLayout>
         <Button Command="{prism:NavigateTo  {x:Static view:Routes.ChatPageRoute}}"></Button>
     </StackLayout>
 

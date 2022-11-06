@@ -4,6 +4,9 @@
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"           
              x:Class="ChatApp.App">
     <Application.Resources>
-
+        <OnPlatform x:Key="PostFontIcon" x:TypeArguments="x:String">
+            <On Platform="Android" Value="chat1.ttf#Regular" />
+            <On Platform="iOS" Value="icons" />
+        </OnPlatform>
     </Application.Resources>
 </prism:PrismApplication>
