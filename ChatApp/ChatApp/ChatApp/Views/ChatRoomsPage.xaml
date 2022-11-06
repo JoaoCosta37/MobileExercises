@@ -15,7 +15,7 @@
 
         <StackLayout BackgroundColor="Black">
             <StackLayout>
-                <Label Text="{Binding}"/>
+                <Label Text="{x:Static view:ChatIcons.ChatIcon}" FontFamily="{StaticResource PostFontIcon}"/>
                 <Label
                TextColor="White"
                HorizontalOptions="Center"
