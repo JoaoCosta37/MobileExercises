@@ -14,5 +14,6 @@ namespace ChatApp.Views
         {
             InitializeComponent();
         }
+
     }
 }
