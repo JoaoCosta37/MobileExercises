@@ -101,6 +101,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
         </Grid>-->
+        <StackLayout>
+            <Button Command="{prism:NavigateTo  {x:Static view:Routes.NewChatRoomPageRoute}}"/>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>

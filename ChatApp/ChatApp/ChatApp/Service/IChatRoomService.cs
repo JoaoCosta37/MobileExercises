@@ -9,6 +9,8 @@ namespace ChatApp.Service
     public interface IChatRoomService
     {
         Task<List<ChatRoom>> GetChatRoomsAsync();
+        Task CreateChatRoomAsync(ChatRoom newChat);
+        Task<bool> ExistChatRoom(string id);
 
     }
 }

@@ -7,9 +7,8 @@ namespace ChatApp.Models
     public class ChatRoom
     {
         public string Description { get; set; }
-        public string Name { get; set; }
-        public DateTime DateCreated { get; set; }
-
+        public string Id { get; set; }
+       // public DateTime DateCreated { get; set; }
         public ChatRoom()
         {
 

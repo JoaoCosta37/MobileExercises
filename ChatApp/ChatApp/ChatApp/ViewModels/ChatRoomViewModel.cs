@@ -26,7 +26,7 @@ namespace ChatApp.ViewModels
             }
         }
 
-        string Description
+        public string Description
         {
             get => ChatRoom.Description; set
             {
@@ -35,24 +35,24 @@ namespace ChatApp.ViewModels
 
             }
         }
-        string Name
+        public string Id
         {
-            get => ChatRoom.Name; set
+            get => ChatRoom.Id; set
             {
-                ChatRoom.Name = value;
+                ChatRoom.Id = value;
                 RaisePropertyChanged();
 
             }
         }
-        DateTime DateCreated
-        {
-            get => ChatRoom.DateCreated; set
-            {
-                ChatRoom.DateCreated = value;
-                RaisePropertyChanged();
+        //public DateTime DateCreated
+        //{
+        //    get => ChatRoom.DateCreated; set
+        //    {
+        //        ChatRoom.DateCreated = value;
+        //        RaisePropertyChanged();
 
-            }
-        }
+        //    }
+        //}
 
     }
 }

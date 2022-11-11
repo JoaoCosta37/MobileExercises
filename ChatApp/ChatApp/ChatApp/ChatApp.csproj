@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net" Version="4.1.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
@@ -41,6 +42,9 @@
     <Compile Update="Views\ChatRoomsPage.xaml.cs">
       <DependentUpon>ChatRoomsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewChatRoomPage.xaml.cs">
+      <DependentUpon>NewChatRoomPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +53,9 @@
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ChatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewChatRoomPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
