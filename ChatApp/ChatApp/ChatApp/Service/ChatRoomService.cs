@@ -23,7 +23,7 @@ namespace ChatApp.Service
         public async Task<List<ChatRoom>> GetChatRoomsAsync()
         {
             var firebase = firebaseClientFactory.CreateClient();
-            var chatRooms = await firebase.Child(firaBaseName).OnceAsync<ChatRoom>();
+            var chatRooms = await firebase.Child("ChatRooms").OnceAsync<ChatRoom>();
 
             return chatRooms.Select(x => x.Object).ToList();
 

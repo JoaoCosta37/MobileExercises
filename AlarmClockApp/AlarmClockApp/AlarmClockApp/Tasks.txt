@@ -1,6 +1,9 @@
 ﻿
 // https://xamgirl.com/xaml-markup-extension-in-xamarin-forms
 
+1 - avisar o usuário que já existe a sala;
+
+
 1 - Fazer a View das Mensagens
 
 2 - Enviar Nova Mensagem (com autor cravo)

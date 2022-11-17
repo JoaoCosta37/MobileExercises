@@ -55,7 +55,7 @@ namespace ChatApp.ViewModels
             }
             else
             {
-
+                navigationService.GoBackAsync();
             }
 
         }

@@ -21,12 +21,15 @@ namespace ChatApp.ViewModels
             loadChatRoomsAsync();
         }
 
-        public ObservableCollection<ChatRoomViewModel> ChatRoomsVm { get => chatRoomsVm; set
+        public ObservableCollection<ChatRoomViewModel> ChatRoomsVm { 
+            get => chatRoomsVm;
+            set
             {
                 chatRoomsVm = value;
                 RaisePropertyChanged();
             }
         }
+
 
         async Task loadChatRoomsAsync()
         {
