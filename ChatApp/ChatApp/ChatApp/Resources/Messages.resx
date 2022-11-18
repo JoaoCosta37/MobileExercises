@@ -123,4 +123,13 @@
   <data name="ChooseChatRoom" xml:space="preserve">
     <value>Choose a Chat Room</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="NewChat" xml:space="preserve">
+    <value>New Chat Room</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
 </root>

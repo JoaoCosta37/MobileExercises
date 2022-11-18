@@ -45,7 +45,7 @@ namespace ChatApp.Service
 
         public async Task<bool> ExistChatRoom(string id)
         {
-            return true;
+            return false;
         }
     }
 }

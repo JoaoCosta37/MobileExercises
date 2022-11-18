@@ -121,6 +121,15 @@
     <value>Salas de Conversa</value>
   </data>
   <data name="ChooseChatRoom" xml:space="preserve">
-    <value>Escolha uma sala de conversa</value>
+    <value>Escolha uma Sala de Conversa</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="NewChat" xml:space="preserve">
+    <value>Nova Sala de Conversa</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
   </data>
 </root>

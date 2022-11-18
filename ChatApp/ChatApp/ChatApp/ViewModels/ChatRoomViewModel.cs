@@ -1,4 +1,5 @@
-﻿using ChatApp.Models;
+﻿using ChatApp.Features;
+using ChatApp.Models;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -7,10 +8,9 @@ using System.Text;
 
 namespace ChatApp.ViewModels
 {
-    public class ChatRoomViewModel : BindableBase
+    public class ChatRoomViewModel : ValidableViewModel
     {
         private ChatRoom chatRoom;
-
         public ChatRoomViewModel(ChatRoom chatRoom)
         {
             this.chatRoom = chatRoom;
@@ -44,15 +44,6 @@ namespace ChatApp.ViewModels
 
             }
         }
-        //public DateTime DateCreated
-        //{
-        //    get => ChatRoom.DateCreated; set
-        //    {
-        //        ChatRoom.DateCreated = value;
-        //        RaisePropertyChanged();
-
-        //    }
-        //}
-
+        public override bool IsValid => (Description != null && Id != null);
     }
 }

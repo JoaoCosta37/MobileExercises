@@ -4,20 +4,18 @@
 1 - avisar o usuário que já existe a sala;
 
 
-1 - Fazer a View das Mensagens
-
 2 - Enviar Nova Mensagem (com autor cravo)
 
 
 3 - Pensar na Integração da Foto no ToDoList
-
-4 - Fazer tela Inicial do Chat
 
 https://blog.logrocket.com/how-to-build-chatroom-app-react-firebase/
 
 5 - Fazer cadastro de um chat novo
 
 https://github.com/step-up-labs/firebase-database-dotnet
+
+6 - Criar a tela de Logine tratar a mensagem de erro
 
 
 

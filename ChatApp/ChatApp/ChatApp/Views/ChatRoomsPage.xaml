@@ -2,18 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:ChatApp.Views"
+             xmlns:vm="clr-namespace:ChatApp.ViewModels"
              xmlns:prism="http://prismlibrary.com"
              xmlns:mark="clr-namespace:ChatApp.Views.Markup"
              x:Class="ChatApp.Views.ChatRoomsPage">
 
-    <StackLayout BackgroundColor="Black">
+    <StackLayout BackgroundColor="Black"
+                 Orientation="Vertical"
+                 VerticalOptions="FillAndExpand">
         <StackLayout.Resources>
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
             </Style>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
         </StackLayout.Resources>
 
-        <StackLayout BackgroundColor="Black">
+        <StackLayout BackgroundColor="Transparent">
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
                 <Label Text="{x:Static view:ChatIcons.ChatIcon}"
@@ -40,70 +46,45 @@
                 </Label.Text>
             </Label>
         </StackLayout>
-        <StackLayout Margin="20,10">
+        <StackLayout Margin="20,10"
+                     Orientation="Vertical"
+                     VerticalOptions="FillAndExpand">
             <FlexLayout Wrap="Wrap"
-                        AlignItems="Start"  
-                        AlignContent="Start"
-                        JustifyContent="Start"
-                        BackgroundColor="Azure"
+                        AlignItems="Center"
+                        JustifyContent="SpaceAround"
                         BindableLayout.ItemsSource="{Binding ChatRoomsVm}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Frame WidthRequest="154" Padding="0" CornerRadius="10" HasShadow="True">
-                            <StackLayout Orientation="Vertical" Padding="10" HorizontalOptions="FillAndExpand">
-                                <Button Text="TEste e mais " FontSize="Large"  BackgroundColor="RoyalBlue"/>
+                        <Frame WidthRequest="160"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BackgroundColor="Transparent">
+                            <StackLayout Orientation="Vertical"
+                                         Padding="10"
+                                         HorizontalOptions="FillAndExpand">
+                                <Button Text="{Binding Description}"
+                                        Command="{Binding OpenChatRoomCommand, Source={RelativeSource AncestorType={x:Type vm:ChatRoomsPageViewModel}}}"
+                                        CommandParameter="{Binding .}"
+                                        FontSize="Large"
+                                        BackgroundColor="#555555"
+                                        HeightRequest="80"/>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
-                <!--<Button Text="TEste e mais " FontSize="Large" BackgroundColor="Plum"/>
-                <Button Text="TEste e mais " FontSize="Large" BackgroundColor="RoyalBlue"/>
-                <Button Text="TEste e mais " FontSize="Large" BackgroundColor="RosyBrown"/>
-                <Button Text="TEste e mais " FontSize="Large" BackgroundColor="Teal"/>
-                <Button Text="TEste e mais " FontSize="Large" BackgroundColor="DarkOrchid"/>
-                <Button Text="TEste e mais " FontSize="Large" BackgroundColor="SlateBlue"/>
-                <Button Text="TEste e mais " FontSize="Large"  BackgroundColor="LightPink"/>-->
-                <!--<ListView ItemsSource="{Binding ChatRoomsVm}" HasUnevenRows="True">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell FlexLayout.AlignSelf="Start">
-                                    
-                                <Button Text="TEste e mais " FontSize="Large"  BackgroundColor="RoyalBlue"/>
-                                <Button Text="{Binding ChatRoom.Description}"
-                                        Command="{prism:NavigateTo  {x:Static view:Routes.ChatPageRoute}}"
-                                        HeightRequest="100"
-                                        BackgroundColor="Bisque"/>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
             </FlexLayout>
         </StackLayout>
 
-        <!--<Grid Padding="20" BackgroundColor="Azure" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
-            </Grid.ColumnDefinitions>
-            <ListView ItemsSource="{Binding ChatRoomsVm}" HasUnevenRows="True">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout 
-                                             BackgroundColor="#666666">
-                                    <Button Text="{Binding ChatRoom.Description}"
-                                            Command="{prism:NavigateTo  {x:Static view:Routes.ChatPageRoute}}"/>
-                                </StackLayout>
-
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-        </Grid>-->
-        <StackLayout>
-            <Button Command="{prism:NavigateTo  {x:Static view:Routes.NewChatRoomPageRoute}}"/>
+        <StackLayout HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="0,0,20,0">
+            <Button Command="{prism:NavigateTo  {x:Static view:Routes.NewChatRoomPageRoute}}"
+                    BackgroundColor="DodgerBlue">
+                <Button.Text>
+                    <mark:MessageExtention MessageKey="NewChat"/>
+                </Button.Text>
+            </Button>
         </StackLayout>
     </StackLayout>
 

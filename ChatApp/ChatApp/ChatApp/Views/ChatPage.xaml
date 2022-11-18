@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:ChatApp.Views"
+             xmlns:mark="clr-namespace:ChatApp.Views.Markup"
              x:Class="ChatApp.Views.ChatPage">
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -16,22 +18,48 @@
                Margin="20"
                FontSize="35"
                ></Label>
-            <Label Text="Choose a Chat Room"
-               TextColor="White"
-               HorizontalOptions="Center"
-               FontSize="17"/>
         </StackLayout>
 
-        <StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand">
             <ListView ItemsSource="{Binding Messages}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding Text}" TextColor="White"></Label>
+                            <Frame BackgroundColor="#555555"
+                                   CornerRadius="5"
+                                   Margin="5"
+                                   Padding="10"
+                                   HorizontalOptions="Start">
+
+                                <Label Text="{Binding Text}"
+                                   TextColor="White"
+                                   FontSize="Medium"/>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+        </StackLayout>
+        <StackLayout VerticalOptions="EndAndExpand">
+            <StackLayout Orientation="Horizontal"
+                         Padding="10,0">
+                <Entry HorizontalOptions="FillAndExpand"
+                       Placeholder="Message"
+                       PlaceholderColor="White"
+                       TextColor="White"
+                       Text="{Binding Message, Mode=OneWay}">
+
+                </Entry>
+                <Button HorizontalOptions="End"
+                        BackgroundColor="DodgerBlue"
+                        Command="{Binding SendMessageCommand}">
+                    <Button.Text>
+                        <mark:MessageExtention MessageKey="Send"/>
+                    </Button.Text>
+                </Button>
+
+            </StackLayout>
+
         </StackLayout>
     </StackLayout>
 </ContentPage>

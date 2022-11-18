@@ -1,15 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mark="clr-namespace:ChatApp.Views.Markup"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:view="clr-namespace:ChatApp.Views"
              x:Class="ChatApp.Views.NewChatRoomPage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="Black">
+            <StackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="White"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextColor" Value="White"/>
+                </Style>
+                <Style TargetType="Entry">
+                    <Setter Property="TextColor" Value="White"/>
+                    <Setter Property="FontSize" Value="30"/>
+                    <Setter Property="PlaceholderColor" Value="White"/>
+                    <Setter Property="BackgroundColor" Value="#555555"/>
+                </Style>
+            </StackLayout.Resources>
+
+            <StackLayout BackgroundColor="Transparent">
+                <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                    <Label Text="{x:Static view:ChatIcons.ChatIcon}"
+                       FontFamily="{StaticResource PostFontIcon}"
+                       VerticalOptions="Center"
+                       FontSize="55"
+                       Margin="0"/>
+                    <Label TextColor="White"
+                       HorizontalOptions="Center"
+                       Margin="0,20"
+                       FontSize="35">
+                        <Label.Text>
+                            <mark:MessageExtention MessageKey="NewChat"/>
+                        </Label.Text>
+                    </Label>
+
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="20,80">
+                
+                
+                
             <Entry Text="{Binding NewChatRoomVm.Id}"
-                   TextColor="White"
-                   FontSize="20"/>
-            <Button Text="CONFIRM"
-                    Command="{Binding SaveChatRoomCommand}"/>
+                   Placeholder="Chat Id"
+                   Margin="0,0,0,20"/>
+            <Entry Text="{Binding NewChatRoomVm.Description}"
+                   Placeholder="Chat Description"/>
+            </StackLayout>
+            
+            <Button Command="{Binding SaveChatRoomCommand}"
+                    IsEnabled="{Binding NewChatRoomVm.IsValid}"
+                    HorizontalOptions="Center"
+                    BackgroundColor="DodgerBlue"
+                    FontSize="Large"
+                    >
+                <Button.Text>
+                    <mark:MessageExtention MessageKey="Confirm"/>
+                </Button.Text>
+            </Button>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

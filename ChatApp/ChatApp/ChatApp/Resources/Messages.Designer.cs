@@ -77,5 +77,32 @@ namespace ChatApp.Resources {
                 return ResourceManager.GetString("ChooseChatRoom", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Chat Room.
+        /// </summary>
+        internal static string NewChat {
+            get {
+                return ResourceManager.GetString("NewChat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        internal static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
     }
 }

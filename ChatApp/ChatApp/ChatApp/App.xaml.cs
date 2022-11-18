@@ -41,6 +41,12 @@ namespace ChatApp
         protected override async void OnInitialized()
         {
             InitializeComponent();
+
+            var auth = DependencyService.Get<IAuth>();
+
+            var token = await auth.LoginWithEmailPassword("joao.costa37@hotmail.com", "12344321");
+
+
             await NavigationService.NavigateAsync(nameof(ChatRoomsPage));
 
         }
