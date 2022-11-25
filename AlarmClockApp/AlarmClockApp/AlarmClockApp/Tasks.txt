@@ -1,21 +1,21 @@
 ﻿
 // https://xamgirl.com/xaml-markup-extension-in-xamarin-forms
 
-1 - avisar o usuário que já existe a sala;
-
-
-2 - Enviar Nova Mensagem (com autor cravo)
-
 
 3 - Pensar na Integração da Foto no ToDoList
 
 https://blog.logrocket.com/how-to-build-chatroom-app-react-firebase/
 
-5 - Fazer cadastro de um chat novo
+
+Colocar nome do Usuário na tela Princiapal
+
+Seprar Mensagens por autor; - Seguir telegram
+
+Criar novo banco = Nome, Status; - Passar esse nome para o Mensagens
+
+Botão de LogOff
+
+
 
 https://github.com/step-up-labs/firebase-database-dotnet
-
-6 - Criar a tela de Logine tratar a mensagem de erro
-
-
 

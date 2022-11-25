@@ -67,9 +67,9 @@ namespace ChatApp.ViewModels
 
         async void sendMessage()
         {
-
             NewMessage.Command newMessage = new NewMessage.Command() { Message = this.message, ChatId = ChatRoomId };
             var result = await mediator.Send(newMessage);
+            Message = "";
         }
     }
 }
