@@ -4,9 +4,12 @@ using ChatApp.Service;
 using MediatR;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,13 +25,15 @@ namespace ChatApp.ViewModels
         private readonly INavigationService navigationService;
         private readonly IChatRoomService chatRoomService;
         private readonly IMediator mediator;
+        private readonly IPageDialogService pageDialogService;
         private ChatRoomViewModel newChatRoomVm;
 
-        public NewChatRoomPageViewModel(INavigationService navigationService, IChatRoomService chatRoomService,IMediator mediator)
+        public NewChatRoomPageViewModel(INavigationService navigationService, IChatRoomService chatRoomService,IMediator mediator, IPageDialogService pageDialogService)
         {
             this.navigationService = navigationService;
             this.chatRoomService = chatRoomService;
             this.mediator = mediator;
+            this.pageDialogService = pageDialogService;
             this.NewChatRoomVm = new ChatRoomViewModel(new ChatRoom());
             this.SaveChatRoomCommand = new Command(() => saveChatRoomCommand());
         }
@@ -45,7 +50,7 @@ namespace ChatApp.ViewModels
         async void saveChatRoomCommand()
         {
 
-            var command = new NewChatRoom.Command() {  ChatRoom = NewChatRoomVm.ChatRoom  };
+            var command = new NewChatRoom.Command() {  ChatRoom = NewChatRoomVm.ChatRoom };
 
             var result = await mediator.Send(command);
 
@@ -55,7 +60,7 @@ namespace ChatApp.ViewModels
             }
             else
             {
-                navigationService.GoBackAsync();
+                pageDialogService.DisplayAlertAsync("Error", result.Errors["*"].LastOrDefault(), "OK");
             }
 
         }

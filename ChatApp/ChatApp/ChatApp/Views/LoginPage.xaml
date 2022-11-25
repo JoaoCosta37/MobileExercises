@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mark="clr-namespace:ChatApp.Views.Markup"
+             x:Class="ChatApp.Views.LoginPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"></Setter>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"></Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout BackgroundColor="Black">
+        <StackLayout Margin="0,50">
+            <Label FontSize="40"
+                   HorizontalOptions="Center"
+                   TextColor="CadetBlue"
+                   FontAttributes="Italic">
+            <Label.Text>
+                <mark:MessageExtention MessageKey="Login"/>
+            </Label.Text>
+        </Label>
+        </StackLayout>
+
+        <StackLayout>
+            <StackLayout Margin="20,10">
+                <Label FontSize="25">
+                    
+                    <Label.Text>
+                        <mark:MessageExtention MessageKey="User"/>
+                    </Label.Text>
+                </Label>
+                <Frame CornerRadius="8"
+                       BorderColor="CadetBlue"
+                       BackgroundColor="Transparent"
+                       Padding="0">
+                    <Entry FontSize="15"
+                       Text="{Binding User}"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="20,10">
+                <Label FontSize="25">
+
+                    <Label.Text>
+                        <mark:MessageExtention MessageKey="Password"/>
+                    </Label.Text>
+                </Label>
+                <Frame CornerRadius="8"
+                       BorderColor="CadetBlue"
+                       BackgroundColor="Transparent"
+                       Padding="0">
+                    <Entry FontSize="15"
+                       Text="{Binding Password}"
+                           IsPassword="true"/>
+
+                </Frame>
+            </StackLayout>
+
+            <Frame Padding="0"
+                   CornerRadius="8"
+                   BorderColor="White"
+                   BackgroundColor="CadetBlue"
+                   HorizontalOptions="End"
+                   Margin="20,10">
+                <Button BackgroundColor="Transparent"
+                        TextColor="White"
+                        Padding="50,0"
+                        Command="{Binding LoginCommand}"
+                        >
+                    <Button.Text>
+                        <mark:MessageExtention MessageKey="Login"/>
+                    </Button.Text>
+                </Button>
+            </Frame>
+            
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

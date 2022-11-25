@@ -14,7 +14,7 @@ namespace ChatApp.Features
     {
         public class Command : IRequest<OperationResult>
         {
-            public ChatRoom ChatRoom { get; set; } 
+            public ChatRoom ChatRoom { get; set; }
 
         }
 

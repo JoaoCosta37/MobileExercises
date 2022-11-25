@@ -5,6 +5,8 @@ using MediatR.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace ChatApp.Features
 {
@@ -12,18 +14,31 @@ namespace ChatApp.Features
     {
         public class Command : IRequest<OperationResult>
         {
-            public Message Message { get; set; }
+            public String Message { get; set; }
+            public string ChatId { get; set; }
         }
 
-        //public class CommandValidator : IPipelineBehavior<Command, OperationResult>
-        //{
-        //    private readonly IMessageService messageService;
+        public class Handler : IRequestHandler<Command, OperationResult>
+        {
+            private readonly IMessageService messageService;
+            private readonly IAuth auth;
 
-        //    public CommandValidator(IMessageService messageService, IEnumerable<IRequestPreProcessor<Command>> preProcessors)
-        //    {
-        //        this.messageService = messageService;
-        //    }
-        //    public async Task
-        //}
+            public Handler(IMessageService messageService, IAuth auth)
+            {
+                this.messageService = messageService;
+                this.auth = auth;
+            }
+
+            public async Task<OperationResult> Handle(Command request, CancellationToken cancellationToken)
+            {
+
+                Message message = new Message() { Author = auth.AuthUser, Date = DateTime.Now, Text = request.Message };
+
+                await messageService.CreateMessageAsync(message, request.ChatId);
+
+                return OperationResult.Success("OK");
+
+            }
+        }
     }
 }

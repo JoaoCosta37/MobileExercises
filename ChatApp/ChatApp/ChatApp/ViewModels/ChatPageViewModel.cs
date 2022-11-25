@@ -1,4 +1,6 @@
-﻿using ChatApp.Service;
+﻿using ChatApp.Features;
+using ChatApp.Service;
+using MediatR;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -12,15 +14,15 @@ namespace ChatApp.ViewModels
     public class ChatPageViewModel : BindableBase, INavigationAware
     {
         private readonly IMessageService messageService;
-
+        private readonly IMediator mediator;
         ObservableCollection<ChatViewModel> messages = new ObservableCollection<ChatViewModel>();
-        private ChatViewModel message;
+        private string message;
         private String ChatRoomId;
 
-        public ChatPageViewModel(IMessageService messageService)
+        public ChatPageViewModel(IMessageService messageService, IMediator mediator)
         {
             this.messageService = messageService;
-
+            this.mediator = mediator;
             this.SendMessageCommand = new Command(() => sendMessage());
 
         }
@@ -33,7 +35,7 @@ namespace ChatApp.ViewModels
                 RaisePropertyChanged();
             }
         }
-        public ChatViewModel Message
+        public String Message
         {
             get => message;
             set
@@ -63,9 +65,11 @@ namespace ChatApp.ViewModels
             });
         }
 
-        void sendMessage()
+        async void sendMessage()
         {
 
+            NewMessage.Command newMessage = new NewMessage.Command() { Message = this.message, ChatId = ChatRoomId };
+            var result = await mediator.Send(newMessage);
         }
     }
 }

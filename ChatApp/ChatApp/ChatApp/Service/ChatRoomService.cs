@@ -45,7 +45,12 @@ namespace ChatApp.Service
 
         public async Task<bool> ExistChatRoom(string id)
         {
-            return false;
+            var firebase = firebaseClientFactory.CreateClient();
+
+            var c = await firebase.Child(firaBaseName).Child(id).OnceSingleAsync<ChatRoom>();
+
+            return c != null;
+
         }
     }
 }

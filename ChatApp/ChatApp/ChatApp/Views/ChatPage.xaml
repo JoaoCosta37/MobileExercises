@@ -47,7 +47,7 @@
                        Placeholder="Message"
                        PlaceholderColor="White"
                        TextColor="White"
-                       Text="{Binding Message, Mode=OneWay}">
+                       Text="{Binding Message, Mode=TwoWay}">
 
                 </Entry>
                 <Button HorizontalOptions="End"

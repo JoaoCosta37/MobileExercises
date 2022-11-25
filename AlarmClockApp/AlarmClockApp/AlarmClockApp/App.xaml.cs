@@ -34,7 +34,7 @@ namespace AlarmClockApp
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync(nameof(ClockPage));
+            await NavigationService.NavigateAsync(nameof(LoginPage));
 
         }
 
@@ -42,9 +42,10 @@ namespace AlarmClockApp
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<ClockPage, ClockPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<AlarmsPage, AlarmsPageViewModel>();
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
             containerRegistry.RegisterForNavigation<NewAlarmPage, NewAlarmPageViewModel>();
-            containerRegistry.RegisterForNavigation<AlarmsPage, AlarmsPageViewModel>();
             containerRegistry.RegisterForNavigation<DaysToRepeatPage, DaysToRepeatPageViewModel>();
             containerRegistry.Register<IWeatherService, WeatherService>();
             containerRegistry.Register<ILocationService, LocationService>();

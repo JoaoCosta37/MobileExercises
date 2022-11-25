@@ -14,6 +14,7 @@ using MediatR;
 using ChatApp.Features;
 using System.Linq;
 using ChatApp.MediatR;
+using Xamarin.Forms.Internals;
 
 namespace ChatApp
 {
@@ -41,24 +42,19 @@ namespace ChatApp
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            var auth = DependencyService.Get<IAuth>();
-
-            var token = await auth.LoginWithEmailPassword("joao.costa37@hotmail.com", "12344321");
-
-
-            await NavigationService.NavigateAsync(nameof(ChatRoomsPage));
+            await NavigationService.NavigateAsync(nameof(LoginPage));
 
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<ChatRoomsPage, ChatRoomsPageViewModel>();
             containerRegistry.RegisterForNavigation<ChatPage, ChatPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<ChatRoomsPage, ChatRoomsPageViewModel>();
             containerRegistry.RegisterForNavigation<NewChatRoomPage, NewChatRoomPageViewModel>();
-            containerRegistry.Register<IChatRoomService, ChatRoomService>();
             containerRegistry.Register<IMessageService, MessageService>();
+            containerRegistry.Register<IChatRoomService, ChatRoomService>();
             containerRegistry.Register<IFirebaseClientFactory, FirebaseClientFactory>();
             containerRegistry.Register<IFirebaseClientFactory, FirebaseClientFactory>();
 
@@ -73,6 +69,8 @@ namespace ChatApp
             container.Register(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>), ifAlreadyRegistered: IfAlreadyRegistered.AppendNewImplementation);
             container.Register(typeof(IPipelineBehavior<,>), typeof(RequestPostProcessorBehavior<,>), ifAlreadyRegistered: IfAlreadyRegistered.AppendNewImplementation);
 
+
+            containerRegistry.Register<IAuth>(() => DependencyService.Get<IAuth>());
 
 
         }
