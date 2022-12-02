@@ -10,6 +10,7 @@ namespace ChatApp.ViewModels
     public class ChatViewModel : BindableBase
     {
         private readonly Message message;
+        private bool userIsAuthor = false;
 
         public ChatViewModel(Message message)
         {
@@ -41,18 +42,6 @@ namespace ChatApp.ViewModels
                 }
             }
         }
-        public DateTime Date
-        {
-            get => message.Date; set
-            {
-                if (message.Date != value)
-                {
-                    message.Date = value;
-                    RaisePropertyChanged();
-
-                }
-            }
-        }
         public Guid Id
         {
             get => message.Id; set
@@ -65,5 +54,15 @@ namespace ChatApp.ViewModels
                 }
             }
         }
+        public bool UserIsAuthor
+        {
+            get => this.userIsAuthor;
+            set
+            {
+                userIsAuthor = value;
+                RaisePropertyChanged();
+            }
+        }  
     }
+
 }

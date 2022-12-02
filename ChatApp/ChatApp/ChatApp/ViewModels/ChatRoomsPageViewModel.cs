@@ -17,14 +17,17 @@ namespace ChatApp.ViewModels
     {
         private readonly IChatRoomService chatRoomService;
         private readonly INavigationService navigationService;
+        private readonly IAuth auth;
         ObservableCollection<ChatRoomViewModel> chatRoomsVm;
 
-        public ChatRoomsPageViewModel(IChatRoomService chatRoomService, INavigationService navigationService)
+        public ChatRoomsPageViewModel(IChatRoomService chatRoomService, INavigationService navigationService, IAuth auth)
         {
             this.chatRoomService = chatRoomService;
             this.navigationService = navigationService;
+            this.auth = auth;
             loadChatRoomsAsync();
             this.OpenChatRoomCommand = new Command((x) => openChatRoom(x));
+            this.SingOutCommand = new Command(() => singOut());
         }
 
         public ObservableCollection<ChatRoomViewModel> ChatRoomsVm
@@ -37,10 +40,11 @@ namespace ChatApp.ViewModels
             }
         }
         public Command OpenChatRoomCommand { get; set; }
+        public Command SingOutCommand { get; set; }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            
+
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
@@ -64,6 +68,11 @@ namespace ChatApp.ViewModels
                 { "ChatRoom", chatRoom.Id}
             };
             navigationService.NavigateAsync(Routes.ChatPageRoute, navParameters);
+        }
+        void singOut()
+        {
+            var result = auth.SignOut();
+            navigationService.NavigateAsync(Routes.LoginPageRoute);
         }
 
 

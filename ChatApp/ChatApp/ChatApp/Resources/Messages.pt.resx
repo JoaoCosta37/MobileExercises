@@ -129,6 +129,9 @@
   <data name="Login" xml:space="preserve">
     <value>Entre</value>
   </data>
+  <data name="Logoff" xml:space="preserve">
+    <value>Desconectar</value>
+  </data>
   <data name="NewChat" xml:space="preserve">
     <value>Nova Sala de Conversa</value>
   </data>

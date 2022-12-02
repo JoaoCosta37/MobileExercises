@@ -97,6 +97,15 @@ namespace ChatApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logoff.
+        /// </summary>
+        internal static string Logoff {
+            get {
+                return ResourceManager.GetString("Logoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Chat Room.
         /// </summary>
         internal static string NewChat {

@@ -8,5 +8,9 @@
             <On Platform="Android" Value="chat1.ttf#Regular" />
             <On Platform="iOS" Value="icons" />
         </OnPlatform>
+        <OnPlatform x:Key="OffIcon" x:TypeArguments="x:String">
+            <On Platform="Android" Value="off.ttf#Regular" />
+            <On Platform="iOS" Value="icons" />
+        </OnPlatform>
     </Application.Resources>
 </prism:PrismApplication>

@@ -6,6 +6,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Xamarin.Forms;
 
@@ -18,6 +19,7 @@ namespace ChatApp.ViewModels
         ObservableCollection<ChatViewModel> messages = new ObservableCollection<ChatViewModel>();
         private string message;
         private String ChatRoomId;
+
 
         public ChatPageViewModel(IMessageService messageService, IMediator mediator)
         {
@@ -61,6 +63,16 @@ namespace ChatApp.ViewModels
         {
             messageService.GetObservable(ChatRoomId).Subscribe((message) =>
             {
+                if (message.Author == User.Id)
+                { 
+                    ChatViewModel chatVm = new ChatViewModel(message)
+                    {
+                        UserIsAuthor = true,
+
+                    };
+                   Messages.Add(chatVm);
+                }
+                else
                 Messages.Add(new ChatViewModel(message));
             });
         }

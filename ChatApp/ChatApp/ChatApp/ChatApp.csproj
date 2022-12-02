@@ -12,11 +12,8 @@
 
   <ItemGroup>
     <Compile Remove="DAL\**" />
-    <Compile Remove="Views\Converters\**" />
     <EmbeddedResource Remove="DAL\**" />
-    <EmbeddedResource Remove="Views\Converters\**" />
     <None Remove="DAL\**" />
-    <None Remove="Views\Converters\**" />
   </ItemGroup>
 
   <ItemGroup>

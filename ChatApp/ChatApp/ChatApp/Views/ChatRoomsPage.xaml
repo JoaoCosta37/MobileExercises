@@ -76,15 +76,33 @@
             </FlexLayout>
         </StackLayout>
 
-        <StackLayout HorizontalOptions="End"
+        <StackLayout Orientation="Horizontal">
+
+            <Frame HorizontalOptions="Start"
+                   HeightRequest="25"
+                   CornerRadius="25"
+                   Padding="0"
+                   BackgroundColor="IndianRed"
+                   Margin="10,0,0,0">
+                <Button Text="{x:Static view:OffIcons.OffIcon}"
+                        FontFamily="{StaticResource OffIcon}"
+                        FontSize="30"
+                        WidthRequest="50"
+                        BackgroundColor="Transparent"
+                        Command="{Binding SingOutCommand}"/>
+
+            </Frame>
+
+            <StackLayout HorizontalOptions="EndAndExpand"
                      VerticalOptions="End"
                      Margin="0,0,20,0">
-            <Button Command="{prism:NavigateTo  {x:Static view:Routes.NewChatRoomPageRoute}}"
+                <Button Command="{prism:NavigateTo  {x:Static view:Routes.NewChatRoomPageRoute}}"
                     BackgroundColor="DodgerBlue">
-                <Button.Text>
-                    <mark:MessageExtention MessageKey="NewChat"/>
-                </Button.Text>
-            </Button>
+                    <Button.Text>
+                        <mark:MessageExtention MessageKey="NewChat"/>
+                    </Button.Text>
+                </Button>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 

@@ -9,5 +9,6 @@ namespace ChatApp.Views
         public static string ChatPageRoute =>  nameof(ChatPage);
         public static string ChatRoomsPageRoute => nameof(ChatRoomsPage);
         public static string NewChatRoomPageRoute => nameof(NewChatRoomPage);
+        public static string LoginPageRoute => nameof(LoginPage);
     }
 }

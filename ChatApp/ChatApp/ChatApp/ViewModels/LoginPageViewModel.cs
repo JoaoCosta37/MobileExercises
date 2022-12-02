@@ -1,4 +1,5 @@
-﻿using ChatApp.Service;
+﻿using ChatApp.Features;
+using ChatApp.Service;
 using ChatApp.Views;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -54,7 +55,11 @@ namespace ChatApp.ViewModels
                 dialogService.DisplayAlertAsync("Error", "Invalid Credentials", "OK");
             }
             else
+            {
+                Features.User.Id = this.User;
                 navigationService.NavigateAsync(Routes.ChatRoomsPageRoute);
+
+            }
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
