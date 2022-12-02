@@ -1,4 +1,4 @@
-﻿using ChatApp.Features;
+﻿using ChatApp.Models;
 using ChatApp.Service;
 using ChatApp.Views;
 using Prism.Mvvm;
@@ -19,13 +19,15 @@ namespace ChatApp.ViewModels
         private readonly IAuth auth;
         private readonly INavigationService navigationService;
         private readonly IPageDialogService dialogService;
+        private readonly IUserService userService;
 
-        public LoginPageViewModel(IAuth auth, INavigationService navigationService, IPageDialogService dialogService)
+        public LoginPageViewModel(IAuth auth, INavigationService navigationService, IPageDialogService dialogService, IUserService userService)
         {
             LoginCommand = new Command(() => login());
             this.auth = auth;
             this.navigationService = navigationService;
             this.dialogService = dialogService;
+            this.userService = userService;
         }
         public string User
         {
@@ -50,16 +52,18 @@ namespace ChatApp.ViewModels
         {
             var token = await auth.LoginWithEmailPassword(user, password);
 
+            userService.CreateUserAsync(new User() { Id = user, Name = "João Costa" });
+            //userService.CreateUserAsync(new User() { Id = "rfdelanhese@gmail.com", Name = "Rafael Delanhese" });
+
             if (String.IsNullOrWhiteSpace(token))
             {
                 dialogService.DisplayAlertAsync("Error", "Invalid Credentials", "OK");
             }
             else
             {
-                Features.User.Id = this.User;
                 navigationService.NavigateAsync(Routes.ChatRoomsPageRoute);
-
             }
+
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)

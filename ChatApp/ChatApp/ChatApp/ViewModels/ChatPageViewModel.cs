@@ -1,4 +1,5 @@
 ﻿using ChatApp.Features;
+using ChatApp.Models;
 using ChatApp.Service;
 using MediatR;
 using Prism.Mvvm;
@@ -16,15 +17,17 @@ namespace ChatApp.ViewModels
     {
         private readonly IMessageService messageService;
         private readonly IMediator mediator;
+        private User user;
         ObservableCollection<ChatViewModel> messages = new ObservableCollection<ChatViewModel>();
         private string message;
         private String ChatRoomId;
 
 
-        public ChatPageViewModel(IMessageService messageService, IMediator mediator)
+        public ChatPageViewModel(IMessageService messageService, IMediator mediator, IUserProvider userProvider)
         {
             this.messageService = messageService;
             this.mediator = mediator;
+            this.user = userProvider.GetUser();
             this.SendMessageCommand = new Command(() => sendMessage());
 
         }
@@ -63,17 +66,9 @@ namespace ChatApp.ViewModels
         {
             messageService.GetObservable(ChatRoomId).Subscribe((message) =>
             {
-                if (message.Author == User.Id)
-                { 
-                    ChatViewModel chatVm = new ChatViewModel(message)
-                    {
-                        UserIsAuthor = true,
+                ChatViewModel chatVm = new ChatViewModel(message) { UserIsAuthor = message.Author == user.Id };
+                Messages.Add(chatVm);
 
-                    };
-                   Messages.Add(chatVm);
-                }
-                else
-                Messages.Add(new ChatViewModel(message));
             });
         }
 
