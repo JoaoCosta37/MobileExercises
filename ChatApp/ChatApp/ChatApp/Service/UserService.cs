@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using ChatApp.Utils;
+using Firebase.Database;
 
 namespace ChatApp.Service
 {
@@ -34,9 +35,12 @@ namespace ChatApp.Service
             }
         }
 
-        public User GetUser(string userId)
+        public async Task<User> GetUser(string userId)
         {
-            throw new NotImplementedException();
+            var firebase = firebaseClientFactory.CreateClient();
+            var userIdHash = Hash.HashString(userId);
+            var user = await firebase.Child("Users").Child(userIdHash).OnceSingleAsync<User>();
+            return user;
         }
     }
 }

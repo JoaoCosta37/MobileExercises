@@ -1,4 +1,5 @@
 ﻿using ChatApp.Features;
+using ChatApp.Infrastructure;
 using ChatApp.Models;
 using ChatApp.Service;
 using MediatR;
@@ -17,16 +18,18 @@ namespace ChatApp.ViewModels
     {
         private readonly IMessageService messageService;
         private readonly IMediator mediator;
+        private readonly IUserService userService;
         private User user;
         ObservableCollection<ChatViewModel> messages = new ObservableCollection<ChatViewModel>();
         private string message;
         private String ChatRoomId;
 
 
-        public ChatPageViewModel(IMessageService messageService, IMediator mediator, IUserProvider userProvider)
+        public ChatPageViewModel(IMessageService messageService, IMediator mediator, IUserProvider userProvider, IUserService userService)
         {
             this.messageService = messageService;
             this.mediator = mediator;
+            this.userService = userService;
             this.user = userProvider.GetUser();
             this.SendMessageCommand = new Command(() => sendMessage());
 
@@ -64,9 +67,10 @@ namespace ChatApp.ViewModels
         }
         void loadMessages()
         {
-            messageService.GetObservable(ChatRoomId).Subscribe((message) =>
+            messageService.GetObservable(ChatRoomId).Subscribe(async (message) =>
             {
-                ChatViewModel chatVm = new ChatViewModel(message) { UserIsAuthor = message.Author == user.Id };
+                var messageUser =  userService.GetUser(message.Author).Result;
+                ChatViewModel chatVm = new ChatViewModel(message, messageUser.Name) { UserIsAuthor = message.Author == user.Id };
                 Messages.Add(chatVm);
 
             });

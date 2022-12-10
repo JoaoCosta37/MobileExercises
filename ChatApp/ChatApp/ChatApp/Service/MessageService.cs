@@ -27,7 +27,7 @@ namespace ChatApp.Service
 
             Subject<Message> messageSubject = new Subject<Message>();
 
-            firebase.Child(fireBaseName).Child(chatRoomId).Child("Messages").AsObservable<Message>().Subscribe((message) =>
+            firebase.Child(fireBaseName).Child(chatRoomId).Child("Messages").OrderByKey().LimitToLast(5).AsObservable<Message>().Subscribe((message) =>
             {
                 Message m = new Message()
                 {

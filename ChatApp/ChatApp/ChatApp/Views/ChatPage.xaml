@@ -45,10 +45,13 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Frame.Style>
+                                <StackLayout>
 
-                                <Label Text="{Binding Text}"
+                                    <Label Text="{Binding AuthorName}"/>
+                                    <Label Text="{Binding Text}"
                                    TextColor="White"
                                    FontSize="Medium"/>
+                                </StackLayout>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>

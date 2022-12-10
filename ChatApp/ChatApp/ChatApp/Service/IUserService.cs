@@ -8,7 +8,7 @@ namespace ChatApp.Service
 {
     public interface IUserService
     {
-        User GetUser(string userId);
+        Task<User> GetUser(string userId);
         Task CreateUserAsync(User newUser);
     }
 }

@@ -26,6 +26,9 @@ namespace ChatApp.Droid
             try
             {
                 var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
+
+               // FirebaseAuth.Instance.CreateUserWithEmailAndPassword
+
                 var tokenResult = await (FirebaseAuth.Instance.CurrentUser.GetIdToken(false).AsAsync<GetTokenResult>());
                 return tokenResult.Token;
             }

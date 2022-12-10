@@ -11,10 +11,12 @@ namespace ChatApp.ViewModels
     {
         private readonly Message message;
         private bool userIsAuthor = false;
+        private string authorName;
 
-        public ChatViewModel(Message message)
+        public ChatViewModel(Message message,string authorName)
         {
             this.message = message;
+            this.authorName = authorName;
         }
 
         public string Author
@@ -28,6 +30,10 @@ namespace ChatApp.ViewModels
 
                 }
             }
+        }
+        public string AuthorName
+        {
+            get => this.authorName;
         }
 
         public string Text

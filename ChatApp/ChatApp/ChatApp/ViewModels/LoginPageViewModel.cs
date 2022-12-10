@@ -52,8 +52,8 @@ namespace ChatApp.ViewModels
         {
             var token = await auth.LoginWithEmailPassword(user, password);
 
-            userService.CreateUserAsync(new User() { Id = user, Name = "João Costa" });
-            //userService.CreateUserAsync(new User() { Id = "rfdelanhese@gmail.com", Name = "Rafael Delanhese" });
+            //userService.CreateUserAsync(new User() { Id = user, Name = "Rafael Delanhese" });
+            //userService.CreateUserAsync(new User() { Id = "rfdelanhese@gmail.com", Name = "Rafael Delanhese" });dddddddd
 
             if (String.IsNullOrWhiteSpace(token))
             {

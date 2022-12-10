@@ -57,7 +57,15 @@ namespace ChatApp
             containerRegistry.Register<IChatRoomService, ChatRoomService>();
             containerRegistry.Register<IFirebaseClientFactory, FirebaseClientFactory>();
             containerRegistry.Register<IUserProvider, UserProvider>();
-            containerRegistry.Register<IUserService, UserService>();
+
+            containerRegistry.Register<UserService>();
+
+            containerRegistry.Register<IUserService>(() => {
+                var userService = containerRegistry.GetContainer().Resolve<UserService>();
+                return new UserServiceWithCache(userService);
+
+                });
+
 
             var container = containerRegistry.GetContainer();
 

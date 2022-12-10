@@ -7,15 +7,15 @@
 https://blog.logrocket.com/how-to-build-chatroom-app-react-firebase/
 
 
-Colocar nome do Usuário na tela Princiapal
+Colocar nome do Usuário na tela Princiapal;
 
-Seprar Mensagens por autor; - Seguir telegram - COlocar na Vm da chatPage o Name pegando do UserService
+Criar novo banco = Nome, Status; - Passar esse nome para o Mensagens;
 
-Criar novo banco = Nome, Status; - Passar esse nome para o Mensagens
+Tela de cadastro de User;
 
-Tela de cadastro de User
+Colocar hora da mensagemm;
 
-
+Brind - colcoar separador de data.
 
 https://github.com/step-up-labs/firebase-database-dotnet
 
